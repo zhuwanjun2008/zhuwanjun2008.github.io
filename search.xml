@@ -7,7 +7,7 @@
       <link href="/2019/08/08/macOS%E6%8C%82%E8%BD%BD%E9%98%BF%E9%87%8C%E4%BA%91OSS/"/>
       <url>/2019/08/08/macOS%E6%8C%82%E8%BD%BD%E9%98%BF%E9%87%8C%E4%BA%91OSS/</url>
       
-        <content type="html"><![CDATA[<p>OSS是阿里云提供的对象存储服务，在申请开通后，可新建buket，挂载到macOS，作为网盘来使用。</p><h3 id="ossfs和s3fs"><a href="#ossfs和s3fs" class="headerlink" title="ossfs和s3fs"></a>ossfs和s3fs</h3><p>阿里云OSS提供的客户端为<a href="https://github.com/aliyun/ossfs" target="_blank" rel="noopener">OSSFS</a>，官方宣称可以支持macOS，但是没有提供二进制包，自己编译时碰到一些问题，放弃使用，转发选择<a href="https://github.com/s3fs-fuse/s3fs-fuse" target="_blank" rel="noopener">s3fs</a>。</p><h3 id="安装和挂载"><a href="#安装和挂载" class="headerlink" title="安装和挂载"></a>安装和挂载</h3><p>安装过程非常简单：<br><figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">brew </span>cask <span class="keyword">install </span>osxfuse</span><br><span class="line"><span class="keyword">brew </span><span class="keyword">install </span>s<span class="number">3f</span>s</span><br></pre></td></tr></table></figure></p><p>安装成功后，在本地新建密码文件，建议放在${HOME}/.passwd-s3fs，密码文件格式为：<br><figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">AccessKey ID:<span class="keyword">Access</span> Key Secret</span><br></pre></td></tr></table></figure></p><p>挂载命令如下：<br><figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">s3fs oss-buketname 本地挂载文件夹 -o <span class="attribute">url</span>=https://阿里云OSS节点域名 -o <span class="attribute">passwd_file</span>=<span class="variable">$&#123;HOME&#125;</span>/.passwd-s3fs</span><br></pre></td></tr></table></figure></p><p>命令执行成功后，即可像使用本地硬盘一样，使用OSS，非常方便。</p>]]></content>
+        <content type="html"><![CDATA[<p>OSS是阿里云提供的对象存储服务，在申请开通后，可新建buket，挂载到macOS，作为网盘来使用。</p><h3 id="ossfs和s3fs"><a href="#ossfs和s3fs" class="headerlink" title="ossfs和s3fs"></a>ossfs和s3fs</h3><p>阿里云OSS提供的客户端为<a href="https://github.com/aliyun/ossfs" target="_blank" rel="noopener">OSSFS</a>，官方宣称可以支持macOS，但是没有提供二进制包，自己编译时碰到一些问题，放弃使用，转发选择<a href="https://github.com/s3fs-fuse/s3fs-fuse" target="_blank" rel="noopener">s3fs</a>。</p><h3 id="安装和挂载"><a href="#安装和挂载" class="headerlink" title="安装和挂载"></a>安装和挂载</h3><p>安装过程非常简单：<br><figure class="highlight mipsasm"><table><tr><td class="code"><pre><span class="line"><span class="keyword">brew </span>cask <span class="keyword">install </span>osxfuse</span><br><span class="line"><span class="keyword">brew </span><span class="keyword">install </span>s<span class="number">3f</span>s</span><br></pre></td></tr></table></figure></p><p>安装成功后，在本地新建密码文件，建议放在${HOME}/.passwd-s3fs，密码文件格式为：<br><figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">AccessKey ID:<span class="keyword">Access</span> Key Secret</span><br></pre></td></tr></table></figure></p><p>挂载命令如下：<br><figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">s3fs oss-buketname 本地挂载文件夹 -o <span class="attribute">url</span>=https://阿里云OSS节点域名 -o <span class="attribute">passwd_file</span>=<span class="variable">$&#123;HOME&#125;</span>/.passwd-s3fs -o <span class="attribute">use_cache</span>=/tmp</span><br></pre></td></tr></table></figure></p><p>命令执行成功后，即可像使用本地硬盘一样，使用OSS，非常方便。</p>]]></content>
       
       
       <categories>
@@ -433,9 +433,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> VPN </tag>
-            
             <tag> OpenVPN </tag>
+            
+            <tag> VPN </tag>
             
         </tags>
       
@@ -535,9 +535,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> PPTP </tag>
-            
             <tag> VPN </tag>
+            
+            <tag> PPTP </tag>
             
         </tags>
       
